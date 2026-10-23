@@ -1,0 +1,24 @@
+  
+namespace SistemaEleicao.Console;
+
+public class Candidato
+{
+    public string Nome { get; }
+    public int Numero { get; }
+
+    public Candidato(string nome, int numero)
+    {
+        if (string.IsNullOrWhiteSpace(nome))
+            throw new ArgumentException(
+                "O nome do candidato é obrigatório.",
+                nameof(nome));
+
+        if (numero <= 0)
+            throw new ArgumentOutOfRangeException(
+                nameof(numero),
+                "O número do candidato deve ser positivo.");
+
+        Nome = nome.Trim();
+        Numero = numero;
+    }
+}
